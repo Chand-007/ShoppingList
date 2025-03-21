@@ -12,6 +12,11 @@ function App() {
   const [totalItems,setTotalItems] = useState([])
 
   function handleAddingItem(e){
+    if(addedItem === ""){
+      alert("Input can't be empty")
+      return
+    }
+    
     const newItem = {
       id:uuidv4(),
       title:addedItem,
