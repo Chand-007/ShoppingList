@@ -1,4 +1,19 @@
 import { configureStore } from "@reduxjs/toolkit";
+import  TotalArray  from "./Slices/CounterSlice";
+
+
+
+
+
+
 export default configureStore({
-    reducer:{},
+
+
+
+    reducer:{
+        total:TotalArray
+    },
+
+
+
 })

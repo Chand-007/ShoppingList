@@ -2,13 +2,26 @@ import DisplayItems from "./Components/DisplayItems"
 import Header from "./Components/Header"
 import './App.css'
 import { useState } from "react"
+import { useSelector,useDispatch } from "react-redux"
+import { addToArray } from "./state/Slices/CounterSlice"
 import {v4 as uuidv4} from 'uuid'
+
+
 
 
 function App() {
 
+
+
+
+
+  const totalArrayState = useSelector((state)=>state.total)
+  const dispatch = useDispatch()
+
+
+
   const [addedItem,setAddedItem] = useState("")
-  const [totalItems,setTotalItems] = useState([])
+
 
   function handleAddingItem(e){
     if(addedItem === ""){
@@ -22,8 +35,10 @@ function App() {
       bought:false,
     }
 
-    const newTotalItems= [...totalItems,newItem]
-    setTotalItems(newTotalItems)
+
+
+    dispatch(addToArray(newItem))
+
     setAddedItem("")
   }
 
@@ -39,7 +54,7 @@ function App() {
         return item
       }
     })
-    setTotalItems(newCheckboxChange)
+    dispatch(addToArray(newCheckboxChange))
   }
 
   return (
@@ -53,7 +68,7 @@ function App() {
       </header>
       <main>
         <DisplayItems 
-        totalItems={totalItems}
+        totalItems={totalArrayState}
         handleCheckboxChange={handleCheckboxChange}/>
       </main>
     </div>
