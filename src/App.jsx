@@ -8,7 +8,6 @@ import {v4 as uuidv4} from 'uuid'
 function App() {
 
   const [addedItem,setAddedItem] = useState("")
-  const [checkbox,setCheckbox] = useState(false)
   const [totalItems,setTotalItems] = useState([])
 
   function handleAddingItem(e){
@@ -16,7 +15,7 @@ function App() {
       alert("Input can't be empty")
       return
     }
-    
+
     const newItem = {
       id:uuidv4(),
       title:addedItem,
